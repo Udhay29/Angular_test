@@ -1,0 +1,23 @@
+<p>test works!</p>
+<form [formGroup]="customform">
+    <input type="text" formControlName="name" />
+    <input type="text" formControlName="age" />
+    <div formArrayName="cusformarray">
+        <div *ngFor="let cus of customform.controls.cusformarray.value; let i = index" [formGroupName]="i">
+            <input type="text" formControlName="address1" />
+            <input type="text" formControlName="address2" />
+        </div>
+    </div>
+    <button type="submit" (click)="val()">Submit</button>
+</form>
+<table>
+    <tr *ngFor = "let data of data">    
+        <td>{{data.id}}</td>
+        <td>{{data.name | custompipe:'Mr.'}}</td>
+    </tr>
+</table>
+<app-contentpro>
+    <div appCustom class="desc" (click) = "click()">Thriller</div>
+    <div appCustom class="footer">Bille Jean</div>
+</app-contentpro>
+<app-sibling (childtoparent)="gotit($event)" (ctop)="pati($event)" [parentdata]="data" [prochild]="'patoch'"></app-sibling>
